@@ -1,0 +1,19 @@
+{
+  "name": "re-signer-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "formidable": "^3.5.1",
+    "uuid": "^9.0.1"
+  }
+}
