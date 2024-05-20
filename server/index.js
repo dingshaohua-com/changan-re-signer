@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/resigner', async(req, res) => {
+
     // 创建一个目录 根据时间戳+随机数
     const dirName = `${new Date().getTime()}_${uuid()}`; // 创建的临时目录名
     const dirPath = path.join(rootPath, 'upload', dirName) // 创建该目录
@@ -43,10 +44,12 @@ app.post('/resigner', async(req, res) => {
     // 操作shell
     childProcess.exec('chmod 777 ./shell/re-signer.sh')
     const stdout = childProcess.execFileSync('./shell/re-signer.sh', [filePath, signalFilePath, dirPath], { encoding: 'utf-8' });
-    console.log(stdout);
     res.json({
         msg: '处理完成',
-        dowonload: dowonloadPath
+        code: 0,
+        data: {
+            dowonload: dowonloadPath
+        }
     });
 })
 

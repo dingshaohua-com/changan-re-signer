@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
@@ -9,6 +10,11 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       outDir: '../dist'
     },
     plugins: [vue()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src')
+      },
+    },
     server: {
       host: true,
       proxy: { // 本地开发接口代理 处理本地开发接口跨域问题
@@ -17,7 +23,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
           changeOrigin: true,
           ws: true,
           secure: false,
-          // rewrite: (path) => path.replace(/^\/api/, '')
+          rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     }
