@@ -23,6 +23,11 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+// 定义路由
+app.get('/test', (req, res) => {
+    res.send('<h1>你好，世界</h1>')
+})
+
 app.post('/resigner', async(req, res) => {
 
     // 创建一个目录 根据时间戳+随机数

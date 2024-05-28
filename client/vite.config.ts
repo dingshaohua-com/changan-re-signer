@@ -7,7 +7,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
   const env = loadEnv(mode, process.cwd()); 
   return {
     build:{
-      outDir: '../dist'
+      outDir: '../server/www'
     },
     plugins: [vue()],
     resolve: {
